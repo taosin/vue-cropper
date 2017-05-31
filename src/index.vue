@@ -1,6 +1,6 @@
 <template>
   <div>
-  <upload></upload>
+  <upload :id="upload"></upload>
   </div>
 </template>
 
@@ -12,6 +12,7 @@
     },
     data () {
       return {
+        upload: 'upload'
       }
     },
     mounted () {
