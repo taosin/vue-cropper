@@ -1,11 +1,10 @@
 <template>
   <div class="v-upload" >
-    <div v-if="show">
+    <div>
       <img id="image" :src="img">
     </div>
     <div>
       <input type="file" :id="id" @change="change">
-      <button @click="show=!show">{{show?'隐藏':'显示'}}</button>
     </div>
   </div>
 </template>
@@ -19,17 +18,16 @@
     data () {
       return {
         img: 'https://odum9helk.qnssl.com/resource/gogopher.jpg',
-        show: false
       }
     },
     props: ['id'],
     mounted () {
-      this.initCropper()
+      // this.initCropper()
     },
     watch: {
       show (val) {
         if (val) {
-          this.initCropper()
+          // this.initCropper()
         }
       }
     },
@@ -38,10 +36,8 @@
         const self = this
         const upload = document.getElementById('upload').files[0]
         if (upload) {
-          self.img = window.URL.createObjectURL(upload)
-          self.show = true
-          $('#image').src = self.img
-          self.initCropper()
+          self.img = (window.URL || window.webkitURL).createObjectURL(upload)
+          this.img = self.img
         }
       },
       initCropper () {
